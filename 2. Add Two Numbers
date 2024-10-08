@@ -1,0 +1,35 @@
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        carry = 0
+        root = n = ListNode(0)  # 虚拟头节点以简化结果链表
+        
+        while (l1 or l2 or carry):
+            sum = carry  # 从进位开始
+            
+            if l1:  # 如果 l1 有值，则加上 l1 的值
+                sum += l1.val
+                l1 = l1.next  # 移动到 l1 的下一个节点
+            
+            if l2:  # 如果 l2 有值，则加上 l2 的值
+                sum += l2.val
+                l2 = l2.next  # 移动到 l2 的下一个节点
+            
+            carry = sum // 10  # 计算新的进位
+            n.next = ListNode(sum % 10)  # 创建新的节点来存储当前位的和
+            n = n.next  # 移动到新节点
+            
+        return root.next  # 返回结果链表，跳过虚拟节点
+
+
+
+
+
+        
+
+        
